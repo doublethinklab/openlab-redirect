@@ -17,23 +17,34 @@
 	<meta name="twitter:image" content="https://fight-dis.info/images/twcover.png?raw=true">
     <link rel="shortcut icon" href="images/favicon.ico">
 	<script>
-	  // Initialize the agent at application startup.
-	  const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
-	    .then(FingerprintJS => FingerprintJS.load({
-	      region: 'ap'
-	    }))
 
-	  // Get the visitor identifier when you need it.
-	  fpPromise
-	    .then(fp => fp.get())
-	    .then(result => {
-	      // This is the visitor identifier:
-	      const visitorId = result.visitorId
-	      console.log(visitorId)
-	      console.log(hashCode(visitorId))
-	    })
+		const urls = [
+			'https://open-lab.online/study/rnzvyctmbk/',
+			'https://open-lab.online/study/cbazslfvwq/',
+			'https://open-lab.online/study/lzbblhaagu/',
+			'https://open-lab.online/study/ottnhifstw/'
+		];
+		var assignURL;
 
-	    function hashCode(string) {
+		// Initialize the agent at application startup.
+		const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
+		.then(FingerprintJS => FingerprintJS.load({
+		  region: 'ap'
+		}))
+
+		// Get the visitor identifier when you need it.
+		fpPromise
+		.then(fp => fp.get())
+		.then(result => {
+		  // This is the visitor identifier:
+		  const visitorId = result.visitorId
+		  console.log(visitorId)
+		  console.log(hashCode(visitorId))
+		  assignURL = urls[hashCode(visitorId)%4];
+		  console.log(assignURL);
+		})
+
+		function hashCode(string) {
 		  var hash = 0, i, chr;
 		  if (string.length === 0) return hash;
 		  for (i = 0; i < string.length; i++) {
@@ -43,6 +54,9 @@
 		  }
 		  return hash;
 		};
+
+
+
 	</script>
 </head>
 <body>

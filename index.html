@@ -42,6 +42,7 @@
 			  // This is the visitor identifier:
 			  const visitorId = result.visitorId
 			  console.log(visitorId)
+			  
 			  Cookies.set('visitorId', visitorId)
 			  const randomNum = Math.abs(hashCode(visitorId))
 			  console.log(randomNum)

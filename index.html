@@ -46,7 +46,7 @@
 		  assignURL = urls[randomNum%4]
 		  console.log(assignURL)
 		  	if(isMobile.any != true) {
-		  		window.location.href = assignURL; //one level up
+		  		// window.location.href = assignURL; //one level up
 		  	}
 		})
 
@@ -61,29 +61,24 @@
 		  return hash;
 		};
 
-		console.log(isMobile);
+		console.log("isMobile="+isMobile.any);
 
 	</script>
 	<style type="text/css">
-		.shape-ex5{
-		    width: 150px;
-		    height: 150px;
-		    max-width:  100%;
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		}
-		.shape-ex5-block{
-		    width: 20px;
-		    height: 20px;
-		    display: block;
-		}
+	.wrapper{
+	  width:100%;
+	}
+	img, .center{
+	    margin:1em auto;
+	    display:block;
+	}
 	</style>
 </head>
 <body>
 
-	<div class="shape-ex5">
-    	<div class="shape-ex5-block"><img src="images/cover.jpg" width="80%"></div>
+	<div class="wrapper" id="wrapper_id">
+	 	<img class="center" src="images/cover.jpg" width="100%">
+	 	請使用電腦與滑鼠參與此測驗
 	</div>
 
 </body>

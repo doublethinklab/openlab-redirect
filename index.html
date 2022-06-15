@@ -40,8 +40,8 @@
 		  const visitorId = result.visitorId
 		  console.log(visitorId)
 		  console.log(hashCode(visitorId))
-		  console.log(hashCode(visitorId)%4)
-		  assignURL = urls[hashCode(visitorId)%4]
+		  console.log(parseInt(hashCode(visitorId))%4)
+		  assignURL = urls[parseInt(hashCode(visitorId))%4]
 		  console.log(assignURL)
 		})
 

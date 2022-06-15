@@ -45,7 +45,9 @@
 		  console.log(randomNum%4)
 		  assignURL = urls[randomNum%4]
 		  console.log(assignURL)
-		  // window.location.href = assignURL; //one level up
+		  	if(isMobile.any != true) {
+		  		window.location.href = assignURL; //one level up
+		  	}
 		})
 
 		function hashCode(string) {

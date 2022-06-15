@@ -38,13 +38,13 @@
 		.then(result => {
 		  // This is the visitor identifier:
 		  const visitorId = result.visitorId
-		  // console.log(visitorId)
+		  console.log(visitorId)
 		  const randomNum = Math.abs(hashCode(visitorId))
-		  // console.log(randomNum)
-		  // console.log(randomNum%4)
+		  console.log(randomNum)
+		  console.log(randomNum%4)
 		  assignURL = urls[randomNum%4]
-		  // console.log(assignURL)
-		  // console.log('==done==')
+		  console.log(assignURL)
+		  console.log('==done==')
 		})
 
 		function hashCode(string) {

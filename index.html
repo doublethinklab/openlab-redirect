@@ -17,6 +17,7 @@
 	<meta name="twitter:image" content="https://lab.doublethinklab.org/images/cover.jpg?raw=true">
     <link rel="shortcut icon" href="images/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 	<script>
 
 		const urls = [
@@ -27,28 +28,38 @@
 		];
 		var assignURL;
 
-		// Initialize the agent at application startup.
-		const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
-		.then(FingerprintJS => FingerprintJS.load({
-		  region: 'ap'
-		}))
+		if(!Cookies.get('visitorId') && isMobile.any != true) {
+			// Initialize the agent at application startup.
+			const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
+			.then(FingerprintJS => FingerprintJS.load({
+			  region: 'ap'
+			}))
 
-		// Get the visitor identifier when you need it.
-		fpPromise
-		.then(fp => fp.get())
-		.then(result => {
-		  // This is the visitor identifier:
-		  const visitorId = result.visitorId
-		  console.log(visitorId)
-		  const randomNum = Math.abs(hashCode(visitorId))
-		  console.log(randomNum)
-		  console.log(randomNum%4)
-		  assignURL = urls[randomNum%4]
-		  console.log(assignURL)
-		  	if(isMobile.any != true) {
-		  		window.location.href = assignURL; //one level up
-		  	}
-		})
+			// Get the visitor identifier when you need it.
+			fpPromise
+			.then(fp => fp.get())
+			.then(result => {
+			  // This is the visitor identifier:
+			  const visitorId = result.visitorId
+			  console.log(visitorId)
+			  Cookies.set('visitorId', visitorId)
+			  const randomNum = Math.abs(hashCode(visitorId))
+			  console.log(randomNum)
+			  console.log(randomNum%4)
+			  assignURL = urls[randomNum%4]
+			  console.log(assignURL)
+			  	if(isMobile.any != true) {
+			  		window.location.href = assignURL; //one level up
+			  	}
+			})
+		}else{
+			var vistorID = Cookies.get('visitorId');
+			const randomNum = Math.abs(hashCode(visitorId))
+			assignURL = urls[randomNum%4]
+			if(isMobile.any != true) {
+			  	window.location.href = assignURL; //one level up
+			}
+		}
 
 		function hashCode(string) {
 		  var hash = 0, i, chr;

@@ -8,34 +8,63 @@
 	<!-- for Facebook -->
 	<meta property="og:title" content="降低陰謀論影響：對抗策略效度檢測">
 	<meta property="og:type" content="article">
-	<meta property="og:image" content="https://fight-dis.info/images/fbcover.png">
-	<meta property="og:description" content="Doublethink Lab & I4C East Asia: A Self-Guided for Fighting Disinformation.">
+	<meta property="og:image" content="https://lab.doublethinklab.org/images/cover.jpg">
+	<meta property="og:description" content="由台北大學犯罪學研究所沈伯洋教授主持、台灣民主實驗室協助執行的行為實驗網站。">
 	<!-- for twitter -->
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="降低陰謀論影響：對抗策略效度檢測">
-	<meta name="twitter:description" content="Doublethink Lab & I4C East Asia: A Self-Guided for Fighting Disinformation.">
-	<meta name="twitter:image" content="https://fight-dis.info/images/twcover.png?raw=true">
+	<meta name="twitter:description" content="由台北大學犯罪學研究所沈伯洋教授主持、台灣民主實驗室協助執行的行為實驗網站。">
+	<meta name="twitter:image" content="https://lab.doublethinklab.org/images/cover.jpg?raw=true">
     <link rel="shortcut icon" href="images/favicon.ico">
 	<script>
-	  // Initialize the agent at application startup.
-	  const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
-	    .then(FingerprintJS => FingerprintJS.load({
-	      region: 'ap'
-	    }))
 
-	  // Get the visitor identifier when you need it.
-	  fpPromise
-	    .then(fp => fp.get())
-	    .then(result => {
-	      // This is the visitor identifier:
-	      const visitorId = result.visitorId
-	      console.log(visitorId)
-	    })
-	</script>    
+		const urls = [
+			'https://open-lab.online/study/rnzvyctmbk/',
+			'https://open-lab.online/study/cbazslfvwq/',
+			'https://open-lab.online/study/lzbblhaagu/',
+			'https://open-lab.online/study/ottnhifstw/'
+		];
+		var assignURL;
+
+		// Initialize the agent at application startup.
+		const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
+		.then(FingerprintJS => FingerprintJS.load({
+		  region: 'ap'
+		}))
+
+		// Get the visitor identifier when you need it.
+		fpPromise
+		.then(fp => fp.get())
+		.then(result => {
+		  // This is the visitor identifier:
+		  const visitorId = result.visitorId
+		  // console.log(visitorId)
+		  const randomNum = Math.abs(hashCode(visitorId))
+		  // console.log(randomNum)
+		  // console.log(randomNum%4)
+		  assignURL = urls[randomNum%4]
+		  // console.log(assignURL)
+		  // console.log('==done==')
+		})
+
+		function hashCode(string) {
+		  var hash = 0, i, chr;
+		  if (string.length === 0) return hash;
+		  for (i = 0; i < string.length; i++) {
+		    chr   = string.charCodeAt(i);
+		    hash  = ((hash << 5) - hash) + chr;
+		    hash |= 0; // Convert to 32bit integer
+		  }
+		  return hash;
+		};
+
+
+
+	</script>
 </head>
 <body>
 	<script type="text/javascript">
-		//window.location.href = 'https://open-lab.online/study/rnzvyctmbk/'; //one level up
+		window.location.href = assignURL; //one level up
 	</script>
 </body>
 </html>

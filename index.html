@@ -24,7 +24,7 @@
 			'https://open-lab.online/study/lzbblhaagu/',
 			'https://open-lab.online/study/ottnhifstw/'
 		];
-		const assignURL;
+		var assignURL;
 
 		// Initialize the agent at application startup.
 		const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
@@ -44,7 +44,7 @@
 		  console.log(randomNum%4)
 		  assignURL = urls[randomNum%4]
 		  console.log(assignURL)
-		  console.log('==done==')
+		  window.location.href = assignURL; //one level up
 		})
 
 		function hashCode(string) {
@@ -61,9 +61,5 @@
 	</script>
 </head>
 <body>
-	<script type="text/javascript">
-		console.log(assignURL);
-		// window.location.href = assignURL; //one level up
-	</script>
 </body>
 </html>

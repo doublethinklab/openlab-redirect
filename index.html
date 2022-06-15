@@ -46,7 +46,7 @@
 		  assignURL = urls[randomNum%4]
 		  console.log(assignURL)
 		  	if(isMobile.any != true) {
-		  		window.location.href = assignURL; //one level up
+		  		// window.location.href = assignURL; //one level up
 		  	}
 		})
 
@@ -72,14 +72,22 @@
 	    margin:1em auto;
 	    display:block;
 	}
+	#wrapper_id{
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
 
-	<div class="wrapper" id="wrapper_id">
+	<div class="wrapper">
 	 	<img class="center" src="images/cover.jpg" width="100%">
-	 	請使用電腦與滑鼠參與此測驗
+	 	<div id="wrapper_id"></div>
 	</div>
 
+	<script type="text/javascript">
+		if(isMobile.any) {
+			document.getElementById("wrapper_id").innerHTML = '請使用電腦與滑鼠參與此測驗';
+		}
+	</script>
 </body>
 </html>

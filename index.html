@@ -42,7 +42,7 @@
 			  // This is the visitor identifier:
 			  const visitorId = result.visitorId
 			  console.log(visitorId)
-			  
+
 			  Cookies.set('visitorId', visitorId)
 			  const randomNum = Math.abs(hashCode(visitorId))
 			  console.log(randomNum)
@@ -55,7 +55,8 @@
 			})
 		}else{
 			var vistorID = Cookies.get('visitorId');
-			const randomNum = Math.abs(hashCode(visitorId))
+			console.log(vistorID);
+			const randomNum = Math.abs(hashCode(visitorId));
 			assignURL = urls[randomNum%4]
 			if(isMobile.any != true) {
 			  	window.location.href = assignURL; //one level up

@@ -55,7 +55,8 @@
 			})
 		}else{
 			var visitorId = Cookies.get('visitorId');
-			const randomNum = Math.abs(hashCode(visitorId))
+			console.log(visitorId)
+			var randomNum = Math.abs(hashCode(visitorId))
 			assignURL = urls[randomNum%4]
 			if(isMobile.any != true) {
 			  	window.location.href = assignURL; //one level up
@@ -73,6 +74,7 @@
 		  return hash;
 		};
 
+		console.log(visitorId);
 		console.log("isMobile="+isMobile.any);
 
 	</script>

@@ -40,7 +40,20 @@
 			const fpPromise = import('https://fpcdn.io/v3/mmDukAa5wdeWdhq7aoTs')
 			.then(FingerprintJS => FingerprintJS.load({
 			  region: 'ap'
-			}))
+			})), function(reason) {
+			  // rejection
+			  console.log(reason);
+			  const visitorId = generateRandomString(7);
+			  Cookies.set('visitorId', visitorId)
+			  const randomNum = Math.abs(hashCode(visitorId))
+			  console.log(randomNum)
+			  console.log(randomNum%4)
+			  assignURL = urls[randomNum%4]
+			  console.log(assignURL)
+			  	if(isMobile.any != true) {
+			  		window.location.href = assignURL; //one level up
+			  	}
+			}
 
 			// Get the visitor identifier when you need it.
 			fpPromise
@@ -59,20 +72,7 @@
 			  	if(isMobile.any != true) {
 			  		window.location.href = assignURL; //one level up
 			  	}
-			}), function(reason) {
-			  // rejection
-			  console.log(reason);
-			  const visitorId = generateRandomString(7);
-			  Cookies.set('visitorId', visitorId)
-			  const randomNum = Math.abs(hashCode(visitorId))
-			  console.log(randomNum)
-			  console.log(randomNum%4)
-			  assignURL = urls[randomNum%4]
-			  console.log(assignURL)
-			  	if(isMobile.any != true) {
-			  		window.location.href = assignURL; //one level up
-			  	}
-			}
+			})
 
 		}else{
 			var visitorId = Cookies.get('visitorId');

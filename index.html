@@ -20,6 +20,13 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 	<script>
 
+		const generateRandomString = (num) => {
+	        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	        let result1= Math.random().toString(36).substring(0,num);       
+
+	        return result1;
+	    }
+
 		const urls = [
 			'https://open-lab.online/study/rnzvyctmbk/',
 			'https://open-lab.online/study/cbazslfvwq/',
@@ -52,7 +59,21 @@
 			  	if(isMobile.any != true) {
 			  		window.location.href = assignURL; //one level up
 			  	}
-			})
+			}), function(reason) {
+			  // rejection
+			  console.log(reason);
+			  const visitorId = generateRandomString(7);
+			  Cookies.set('visitorId', visitorId)
+			  const randomNum = Math.abs(hashCode(visitorId))
+			  console.log(randomNum)
+			  console.log(randomNum%4)
+			  assignURL = urls[randomNum%4]
+			  console.log(assignURL)
+			  	if(isMobile.any != true) {
+			  		window.location.href = assignURL; //one level up
+			  	}
+			}
+
 		}else{
 			var visitorId = Cookies.get('visitorId');
 			console.log(visitorId)
@@ -73,6 +94,7 @@
 		  }
 		  return hash;
 		};
+
 
 		console.log(visitorId);
 		console.log("isMobile="+isMobile.any);

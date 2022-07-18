@@ -28,10 +28,6 @@
 	    }
 
 		const urls = [
-			'https://open-lab.online/study/rnzvyctmbk/',
-			'https://open-lab.online/study/cbazslfvwq/',
-			'https://open-lab.online/study/lzbblhaagu/',
-			'https://open-lab.online/study/ottnhifstw/'
 		];
 		var assignURL;
 
@@ -57,7 +53,7 @@
 			  assignURL = urls[randomNum%4]
 			  console.log(assignURL)
 			  	if(isMobile.any != true) {
-			  		window.location.href = assignURL; //one level up
+			  		// window.location.href = assignURL; //one level up
 			  	}
 			})
 			.catch(error => {
@@ -71,7 +67,7 @@
 			  assignURL = urls[randomNum%4]
 			  console.log(assignURL)
 			  	if(isMobile.any != true) {
-			  		window.location.href = assignURL; //one level up
+			  		// window.location.href = assignURL; //one level up
 			  	}		        
 			})
 
@@ -82,7 +78,7 @@
 			var randomNum = Math.abs(hashCode(visitorId))
 			assignURL = urls[randomNum%4]
 			if(isMobile.any != true) {
-			  	window.location.href = assignURL; //one level up
+			  	// window.location.href = assignURL; //one level up
 			}
 		}
 
@@ -119,12 +115,13 @@
 
 	<div class="wrapper">
 	 	<img class="center" src="images/cover.jpg" width="100%">
-	 	<div id="wrapper_id">正在等待跳轉中，請靜待約 3 秒 ...</div>
+	 	<!-- <div id="wrapper_id">正在等待跳轉中，請靜待約 3 秒 ...</div> -->
+	 	<div id="wrapper_id">目前實驗已經額滿，若有任何問題請聯絡 陳韻如研究員 yunju@doublethinklab.org</div>
 	</div>
 
 	<script type="text/javascript">
 		if(isMobile.any) {
-			document.getElementById("wrapper_id").innerHTML = '請使用電腦與滑鼠參與此測驗';
+			// document.getElementById("wrapper_id").innerHTML = '請使用電腦與滑鼠參與此測驗';
 		}
 	</script>
 </body>
